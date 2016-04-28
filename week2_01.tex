@@ -1,0 +1,30 @@
+\documentclass[a4paper,12pt]{article}
+
+% Install texlive-lang-cyrillic to enable cyrillic support
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+% Magic ends here
+
+\author{Egor Panfilov}
+\title{Our brand new document}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Hello world!
+
+Next row starts after an empty one.
+
+\section{First section}\label{razdel}
+
+Some writing here.
+
+\subsection{Lower one}
+
+And here we add link to section \ref{razdel}.
+
+\end{document}
