@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{article}
+% Document classes: article, report, book, beamer, etc.
+% Document elements:
+%   - part;
+%   - chapter (report/book);
+%   - section;
+%   - subsection;
+%   - subsubsection;
+%   - paragraph;
+%   - subparagraph.
+
+% Install texlive-lang-cyrillic to enable cyrillic support
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+% --------------------------------------------------------
+
+% Preamble goes here
+
+\author{Egor Panfilov}
+\title{Our brand new document}
+\date{\today}
+
+
+\begin{document}
+
+\section{First section}\label{sec:intro}
+
+% Paste title
+\maketitle
+
+Some writing here.
+
+\subsection{Lower one}
+
+And here we add link to section \ref{sec:intro}.
+
+\end{section}
+
+% Reference types
+\ref{sec:intro}      % Object number
+\pageref{sec:intro}  % Page number
+\eqref{sec:intro}    % Equation number 
+% Package `varioref` current/next page
+
+\end{document}

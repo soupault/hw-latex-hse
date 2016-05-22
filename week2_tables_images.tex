@@ -41,37 +41,34 @@
 \usepackage{longtable}  % Длинные таблицы
 \usepackage{multirow} % Слияние строк в таблице
 
-
 %%% Заголовок
 \author{Документы и презентации в \LaTeX}
 \title{Рисунки и таблицы}
 \date{\today}
 
 
-
 \begin{document} % конец преамбулы, начало документа
 
 \maketitle
 
-\section{Images}
+\section{Изображения}
 
-\subsection{Raster images}
+\subsection{Растровые изображения}
 
 \includegraphics{znak.jpg}
 
-% Scaling
+% Масштабирование
 \includegraphics[scale=0.5]{znak.jpg}
 \includegraphics[width=4mm]{znak.jpg}
 \includegraphics[width=4mm, height=10cm, keepaspectratio]{znak.jpg}
 \includegraphics[draft]{znak.jpg}
 
-\subsection{Vector images}
+\subsection{Векторные изображения}
 
 \includegraphics{logo.pdf}
-
 \includegraphics[width=\textwidth]{logo.pdf}
 
-\section{Tables}
+\section{Таблицы}
 
 \subsection{tabular}
 
@@ -96,9 +93,10 @@
 \end{tabulary}
 
 
-\section{Floating objects}
+\section{Плавающие объекты}
 
-% h - here, !h - stronger here
+% h - here, !h - усиленное here
+% H (пакет float) - прямо здесь
 \begin{table}[h]
   \begin{center}
     \begin{caption}{Just a table}\label{tab:mytab}
