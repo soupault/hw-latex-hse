@@ -12,7 +12,8 @@
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
 
 %% Номера формул
-\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+% ВАЖНО!
+% \mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
 
 %% Шрифты
 \usepackage{euscript}	 % Шрифт Евклид
@@ -41,6 +42,7 @@
 \[2 + 3 =   4 +1+1+1+1+100+200+900+100000000000\]
 
  Текст абзаца.
+
 \[ 2+2=4 \]
 
 $2,4$, $(2, 4)$
@@ -85,11 +87,14 @@ $A \cap B$, $A \cup B$
 
 \subsection{Диакритические знаки}
 
+$\bar{x}=5$, $\tilde{eurhkjs7} = 8$
 $\overline{456789xyz}=5$, $\widetilde{eurhkjs7} = 8$
 
 \subsection{Буквы других алфавитов}
 
 $\tg \Phi = 1$
+
+$\alpha$ 
 
 $\epsilon$, $\phi$
 
@@ -108,11 +113,11 @@ $\varepsilon$, $\varphi$
 
 \subsection{Несколько формул}
 
-\begin{align*}
-	2\times 2 &= 4 & 6\times 8 &= 48 \\
+\begin{align}
+	2\times 2 &= 4 & 6\times 8 &= 48 \\ \tag{shiet}
 	3\times 3 &= 9 & a+b &= c\\
 	10 \times 65464 &= 654640 & 3/2&=1,5
-\end{align*}
+\end{align}
 
 \begin{equation}
 	\begin{aligned}
@@ -162,6 +167,15 @@ $\varepsilon$, $\varphi$
 		a_{11} & a_{12} & a_{13} \\
 		a_{21} & a_{22} & a_{23}
 	\end{bmatrix}
+\]
+
+\[ 
+\begin{bmatrix} 
+x_{11} & x_{12} & \ldots & x_{1m}\\ 
+x_{21} & x_{22} & \ldots & x_{2m}\\ 
+\vdots & \vdots & \ddots & \vdots\\ 
+x_{n1} & x_{n2} & \ldots & x_{nm} 
+\end{bmatrix} 
 \]
 
 В уравнении \eqref{eq:sum} на стр. \pageref{eq:sum} много слагаемых.
