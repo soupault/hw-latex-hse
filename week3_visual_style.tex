@@ -1,0 +1,210 @@
+\documentclass[a4paper,12pt]{article}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумерация формул слева
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Теоремы
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{proposition}[theorem]{Утверждение}
+ 
+\theoremstyle{definition} % "Определение"
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+ 
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{nonum}{Решение}
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+	\geometry{top=25mm}
+	\geometry{bottom=35mm}
+	\geometry{left=35mm}
+	\geometry{right=20mm}
+ %
+\usepackage{fancyhdr} % Колонтитулы
+ 	\pagestyle{fancy}
+ 	\renewcommand{\headrulewidth}{0mm}  % Толщина линейки, отчеркивающей верхний колонтитул
+ 	\lfoot{Нижний левый}
+ 	\rfoot{Нижний правый}
+ 	\rhead{Верхний правый}
+ 	\chead{Верхний в центре}
+ 	\lhead{Верхний левый}
+ 	% \cfoot{Нижний в центре} % По умолчанию здесь номер страницы
+
+\usepackage{setspace} % Интерлиньяж
+%\onehalfspacing % Интерлиньяж 1.5
+%\doublespacing % Интерлиньяж 2
+%\singlespacing % Интерлиньяж 1
+
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+
+\usepackage{soulutf8} % Модификаторы начертания
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{				% Гиперссылки
+    unicode=true,           % русские буквы в раздела PDF
+    pdftitle={Заголовок},   % Заголовок
+    pdfauthor={Автор},      % Автор
+    pdfsubject={Тема},      % Тема
+    pdfcreator={Создатель}, % Создатель
+    pdfproducer={Производитель}, % Производитель
+    pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+    colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+    linkcolor=red,          % внутренние ссылки
+    citecolor=green,        % на библиографию
+    filecolor=magenta,      % на файлы
+    urlcolor=cyan           % на URL
+}
+
+%\renewcommand{\familydefault}{\sfdefault} % Начертание шрифта
+
+\usepackage{multicol} % Несколько колонок
+
+\author{\LaTeX{} в Вышке}
+\title{3.2 Оформление документа в целом}
+\date{\today}
+
+\begin{document} % конец преамбулы, начало документа
+
+\maketitle
+
+\section{Кегль}
+
+\begin{table}[h!]
+	\caption{Размеры шрифта}
+	\centering
+		\begin{tabular}{|c|c|}
+		\hline	\verb|\tiny|      & \tiny        крошечный \\
+		\hline	\verb|\scriptsize|   & \scriptsize  очень маленький\\
+			\hline \verb|\footnotesize| & \footnotesize  довольно маленький \\
+			\hline \verb|\small|        &  \small        маленький \\
+			\hline \verb|\normalsize|   &  \normalsize  нормальный \\
+			\hline \verb|\large|        &  \large       большой \\
+			\hline \verb|\Large|        &  \Large       еще больше \\[5pt]
+			\hline \verb|\LARGE|        &  \LARGE       очень большой \\[5pt]
+			\hline \verb|\huge|         &  \huge        огромный \\[5pt]
+			\hline \verb|\Huge|         &  \Huge        громадный \\ \hline
+		\end{tabular}
+\end{table}
+
+\begin{Huge}
+	\textbf{Какой-нибудь \textit{обычный}  текст.}
+\end{Huge}
+
+Можно менять {\huge размер} локально.
+
+Какой-нибудь \emph{текст \emph{с} выделением}.
+
+\section{Титульный лист}
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+	\textit{Федеральное государственное автономное учреждение \\
+		высшего профессионального образования}
+	\vspace{0.5ex}
+	
+	\textbf{НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ \\ <<ВЫСШАЯ ШКОЛА ЭКОНОМИКИ>>}
+\end{center}
+\vspace{13ex}
+\begin{flushright}
+	\noindent
+	\textit{Фамилия Имя Отчество}
+	\\
+	\textit{студент факультета экономики \\(группа 211И)}
+\end{flushright}
+\begin{center}
+	\vspace{13ex}
+	\so{\textbf{РЕФЕРАТ}}
+	\vspace{1ex}
+	
+	по какой-то дисциплине
+	
+	
+	на тему:
+	
+	\textbf{\textit{<<Заголовок>>}}
+	
+	\vfill
+	Москва 2014
+\end{center}
+
+\newpage
+
+\section{Гиперссылки}
+
+\url{http://hse.ru}
+
+Сайт \href{http://hse.ru}{ВШЭ}
+
+\section{Перечни}
+
+\begin{itemize}
+	\item[*] Первый пункт 
+	\item 
+	\begin{itemize}
+		\item Вложенный список
+		\item ляляля 
+		\begin{enumerate}
+			\item Первый пункт нумерованного списка
+			\item Второй пункт
+		\end{enumerate}
+	\end{itemize}
+	\item Второй пункт
+\end{itemize}
+
+\begin{enumerate}
+	\begin{multicols}{2}
+		\item $(1+x_1)(1+x_2)^2$;
+		\item $\sqrt{x_1}$;
+		\item $x_1+2x_2-10$;
+		\item $(0{,}5x_1+x_2)^2$;
+		\item $x_2$;
+		\item $\sqrt{x_1}+\sqrt{2x_2}$;
+		\item $\ln (1+x_1)+2\ln(1+x_2)$;
+		\item $5x_1$;
+		\item $10-x_1+2x_2$.
+	\end{multicols}
+\end{enumerate}
+
+
+
+\end{document} % конец документа
+

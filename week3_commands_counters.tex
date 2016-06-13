@@ -1,0 +1,174 @@
+% Этот шаблон документа разработан в 2014 году
+% Данилом Фёдоровых (danil@fedorovykh.ru) 
+% для использования в курсе 
+% <<Документы и презентации в \LaTeX>>, записанном НИУ ВШЭ
+% для Coursera.org: http://coursera.org/course/latex .
+% Исходная версия шаблона --- 
+% https://www.writelatex.com/coursera/latex/3.1
+
+\documentclass[a4paper,12pt]{article}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумерация формул слева
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Теоремы
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{proposition}[theorem]{Утверждение}
+ 
+\theoremstyle{definition} % "Определение"
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+ 
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{nonum}{Решение}
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+%%% Заголовок
+\author{\LaTeX{} в Вышке}
+\title{3.1 Счетчики и макрокоманды}
+\date{\today}
+
+\begin{document} % конец преамбулы, начало документа
+
+\maketitle
+
+\section{Теоремы}
+
+\begin{theorem}[Простое равенство]\label{theorem1}
+	$2+2=4$
+\end{theorem}
+
+Смотри теорему \ref{theorem1} на стр. \pageref{theorem1}.
+
+\begin{proposition}
+	$3\times 3 = 9$
+\end{proposition}
+
+\begin{corollary}
+	$9/3 = 3$
+\end{corollary}
+
+\begin{nonum}
+	Всё что угодно.
+\end{nonum}
+
+\section{Новые команды}
+
+\newcommand{\nw}{\ensuremath{\succcurlyeq}}
+
+\begin{equation}\label{pref}
+	x \nw y 
+\end{equation}
+
+Предпочтение \nw\ является полным.
+
+\newcommand{\str}[1]{%
+на стр. \pageref{#1}%
+}
+
+\newcommand{\qwerty}[2][X]{
+\begin{equation}
+	#1 \nw #2
+\end{equation}
+}
+
+\qwerty{Y}
+
+$x\ge y$
+
+\renewcommand{\ge}{\geqslant}
+
+$x\ge y$
+
+\section{Счетчики}
+
+\newcounter{nc}[section]
+\arabic{nc}
+
+\setcounter{nc}{5}
+\arabic{nc}
+
+\Roman{nc}
+
+\alph{nc}
+
+\Asbuk{nc}
+
+\arabic{section}
+
+\renewcommand{\thesection}{\Asbuk{section}}
+\newcommand{\z}[1]{%
+
+\addtocounter{nc}{1}
+Задача \thesection.\arabic{nc}. #1%
+}
+
+\z{Текст задачи.}
+
+\z{Problem two}
+
+\setcounter{section}{0}
+
+\section{Окружения}
+
+\newenvironment{zadacha}[1]{
+
+\addtocounter{nc}{1}%
+Задача \thesection.\arabic{nc}. <<#1>> %
+}{\vspace{1cm}}
+
+\begin{zadacha}{Главная задача}
+Текст задачи.
+\end{zadacha}
+
+\section{etoolbox}
+
+\newbool{answers}
+\booltrue{answers}
+\renewcommand{\z}[2][Нет ответа.]{%
+
+\addtocounter{nc}{1}
+Задача \thesection.\arabic{nc}. #2%
+
+\ifbool{answers}{Ответ. #1}{}
+}
+
+\z[6]{Сколько будет $2+4$?}
+
+
+\end{document} % конец документа
+
