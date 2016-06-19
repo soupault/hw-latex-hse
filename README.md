@@ -26,12 +26,11 @@
 
 Шаблоны и примеры
 -----------------
-- http://www.latextemplates.com — шаблоны для LaTeX
-- http://www.overleaf.com/latex/templates — шаблоны от Overleaf
-- http://www.sharelatex.com/templates — шаблоны от ShareLaTeX
-- http://www.howtotex.com/templates — еще шаблоны
-- http://www.hartwork.org/beamer-theme-matrix — варианты оформления презентаций в Beamer
-- http://www.texample.net/tikz/ — примеры графики в TikZ
+- Шаблоны для LaTeX: [1](http://www.latextemplates.com), [2](http://www.howtotex.com/templates)
+- [Шаблоны от Overleaf](http://www.overleaf.com/latex/templates)
+- [Шаблоны от ShareLaTeX](http://www.sharelatex.com/templates)
+- [Варианты оформления презентаций в Beamer](http://www.hartwork.org/beamer-theme-matrix)
+- [Примеры графики в TikZ](http://www.texample.net/tikz/)
 
 Для удобной работы
 ------------------
@@ -52,15 +51,14 @@
 - [Шпаргалка по LaTeX](http://wch.github.io/latexsheet/latexsheet.pdf)
 - [Классификация ошибок в LaTeX](http://www.cs.utexas.edu/~witchel/errorclasses.html)
 - [Документация пакета BibLaTeX](http://www.ctan.org/pkg/biblatex)
-- [Примеры графики в TikZ](http://www.texample.net/tikz/)
 - [Very minimal introduction to TikZ, Jacques Crémer](http://cremeronline.com/LaTeX/minimaltikz.pdf)
 - [Руководство по Beamer](http://ctan.uni-altai.ru/macros/latex/contrib/beamer/doc/beameruserguide.pdf)
-- [www.howtotex.com/general/12-great-resources-for-getting-started-with-latex/](http://www.howtotex.com/general/12-great-resources-for-getting-started-with-latex/) — список полезных ресурсов для начинающих
+- [http://www.howtotex.com/general/12-great-resources-for-getting-started-with-latex/](http://www.howtotex.com/general/12-great-resources-for-getting-started-with-latex/) — список полезных ресурсов для начинающих
 - [Документация пакета geometry](http://www.ctan.org/pkg/geometry)
 
 Полезные темы форумов
 ---------------------
-- [http://tex.stackexchange.com/questions/139873/what-are-the-most-common-mistakes-that-beginners-of-la...] — типичные ошибки, допускаемые новичками
-- [http://tex.stackexchange.com/questions/158668/nice-scientific-pictures-show-off] — красивые картинки, сделанные при помощи LaTeX/TikZ
-- [http://tex.stackexchange.com/questions/31334/how-to-create-individual-chapter-pdfs/31366#31366] — решение, как сделать множество pdf-документов сразу (например, разбиение на главы)
+- http://tex.stackexchange.com/questions/139873/what-are-the-most-common-mistakes-that-beginners-of-la... — типичные ошибки, допускаемые новичками
+- http://tex.stackexchange.com/questions/158668/nice-scientific-pictures-show-off — красивые картинки, сделанные при помощи LaTeX/TikZ
+- http://tex.stackexchange.com/questions/31334/how-to-create-individual-chapter-pdfs/31366#31366 — решение, как сделать множество pdf-документов сразу (например, разбиение на главы)
 
