@@ -1,0 +1,198 @@
+\documentclass[a4paper,12pt,leqno]{article}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумерация формул слева
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Теоремы
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{proposition}[theorem]{Утверждение}
+ 
+\theoremstyle{definition} % "Определение"
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+ 
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{nonum}{Решение}
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+	\geometry{top=25mm}
+	\geometry{bottom=35mm}
+	\geometry{left=35mm}
+	\geometry{right=20mm}
+ %
+%\usepackage{fancyhdr} % Колонтитулы
+% 	\pagestyle{fancy}
+ 	%\renewcommand{\headrulewidth}{0pt}  % Толщина линейки, отчеркивающей верхний колонтитул
+% 	\lfoot{Нижний левый}
+% 	\rfoot{Нижний правый}
+% 	\rhead{Верхний правый}
+% 	\chead{Верхний в центре}
+% 	\lhead{Верхний левый}
+%	\cfoot{Нижний в центре} % По умолчанию здесь номер страницы
+
+\usepackage{setspace} % Интерлиньяж
+%\onehalfspacing % Интерлиньяж 1.5
+%\doublespacing % Интерлиньяж 2
+%\singlespacing % Интерлиньяж 1
+
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+
+\usepackage{soul} % Модификаторы начертания
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{				% Гиперссылки
+    unicode=true,           % русские буквы в раздела PDF
+    pdftitle={Заголовок},   % Заголовок
+    pdfauthor={Автор},      % Автор
+    pdfsubject={Тема},      % Тема
+    pdfcreator={Создатель}, % Создатель
+    pdfproducer={Производитель}, % Производитель
+    pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+    colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+    linkcolor=red,          % внутренние ссылки
+    citecolor=black,        % на библиографию
+    filecolor=magenta,      % на файлы
+    urlcolor=cyan           % на URL
+}
+
+\usepackage{csquotes} % Еще инструменты для ссылок
+
+\usepackage{multicol} % Несколько колонок
+
+\usepackage{tikz} % Работа с графикой
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\author{\LaTeX{} в Вышке}
+\title{Ti\emph{k}Z}
+\date{\today}
+
+\begin{document} % конец преамбулы, начало документа
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}[scale=2]
+			\draw[help lines] (0,0) grid (2,3);
+			\draw[<->] (0,3.1) -- (0,0) -- (2.1,0);
+			\draw[green,fill=yellow] (1,1) circle [radius=0.5];
+			\draw[red] (0,0) -- (0,1);
+			\draw[red] (0,1) -- (1,1) -- (2,3);
+			\draw[domain=-1:2] plot (\x, \x*\x/2 + 2);
+			\node[below] at (1,1) {\tiny Текст $R=0,5$};
+		\end{tikzpicture}
+		\caption{Первая картинка}
+	\end{center}
+\end{figure}
+
+% Источник: http://thetarzan.wordpress.com/2011/06/19/tikz-for-economists-a-how-to-guide-with-examples/
+\begin{tikzpicture}[domain=0:3.7,thick,scale=1.5]
+	\usetikzlibrary{calc}           			% Расчет координат
+	\usetikzlibrary{decorations.pathreplacing}  
+
+	% Параметры функций спроса и предложения
+	\def\dint{2.1}      % Пересечение D с осью.		% \def — аналог команды \renewcommand
+	\def\dslp{-0.5}     % Наклон спроса.			% \def — аналог команды \renewcommand
+	\def\sint{0.3}      % Пересечение S спроса.		% \def — аналог команды \renewcommand
+	\def\sslp{0.8}      % Наклон предложения.		% \def — аналог команды \renewcommand
+
+	% Функции спроса и предложения
+ 	\newcommand{\demand}{\x,{\dslp*\x+\dint}}
+ 	\newcommand{\supply}{\x,{\sslp*\x+\sint}}
+
+	% Координаты пересечений
+    \coordinate (ints) at ({(\sint-\dint)/(\dslp-\sslp)},{(\sint-\dint)/(\dslp-\sslp)*\sslp+\sint});
+    \coordinate (ep) at (0,{(\sint-\dint)/(\dslp-\sslp)*\sslp+\sint});
+    \coordinate (eq) at ({(\sint-\dint)/(\dslp-\sslp)},0);
+    \coordinate (dint) at (0,{\dint});
+    \coordinate (sint) at (0,{\sint});
+
+    % Спрос (D)
+    \draw[thick,color=green] plot (\demand) node[right] {$D$};
+	% Преложение (S)
+    \draw[thick,color=purple] plot (\supply) node[right] {$S$};
+
+	% Оси
+    \draw[->] (0,0) -- (4,0) node[right] {$Q$};
+    \draw[->] (0,0) -- (0,3.6) node[above] {$P$};
+    
+    % Пнктирные линии              
+    \draw[dashed] (ints) -- (eq) node[below] {$Q^*$};                   
+    \draw[dashed] (ints) -- (ep) node[left] {$P^*$};                       
+\end{tikzpicture}
+
+\begin{tikzpicture}
+	\begin{axis}[xlabel={Ставка процента (\%)},ylabel={Приток капитала (млрд долл. США, ППС)},clip=false,xmin=-2, xmax=31.9, ymin=-5500000000, ymax=8500000000,axis lines=center,width=16cm,height=10cm,scale=0.8] 
+		\addplot [only marks] table[x index=0,y index=1,col sep=comma] {week4_data.dat};  
+		\node[pin={[pin edge={thick}]190:{Белоруссия}}] at (axis cs:29.7,-1876683214) {};
+		\node[pin={[pin edge={thick}]350:{США}}] at (axis cs:1.5,6956000000) {};
+		\node[pin={[pin edge={thick}]350:{Румыния}}] at (axis cs:13,2463000000) {};
+		\node[pin={[pin edge={thick}]10:{Россия}}] at (axis cs:0.6,-5217800000) {};
+		\node[pin={[pin edge={thick}]260:{Великобритания}}] at (axis cs:-1.2,5983774999) {};
+		\node[pin={[pin edge={thick}]272:{Армения}}] at (axis cs:18.8,108025351) {};
+		\node[pin={[pin edge={thick}]350:{Швейцария}}] at (axis cs:2.6,-2044279359) {};
+		\node[pin={[pin edge={thick}]10:{Китай}}] at (axis cs:4.1,4272276974) {};
+		\node[pin={[pin edge={thick}]260:{Восточный Тимор}}] at (axis cs:-1.5,23415198) {};
+	\end{axis}
+\end{tikzpicture}
+
+\usetikzlibrary{arrows}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+	\draw[->,color=black] (0,0) -- (6.37,0);
+	\foreach \x in {,1,2,3,4,5,6}
+		\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+	\draw[->,color=black] (0,0) -- (0,5.25);
+	\foreach \y in {,1,2,3,4,5}
+		\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+	\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+	\clip(0,0) rectangle (6.37,5.25);
+	\draw (0.05,2.75)-- (2.14,0);
+	\draw (0.07,0.24)-- (3.33,1.82);
+	\draw(2.41,1.99) circle (2cm);
+	\begin{scriptsize}
+		\draw[color=black] (0.93,1.36) node {$D$};
+		\draw[color=black] (1.85,0.94) node {$S$};
+		\draw[color=black] (1.95,2.65) node {$c$};
+	\end{scriptsize}
+\end{tikzpicture}
+
+
+\end{document} % конец документа
+
