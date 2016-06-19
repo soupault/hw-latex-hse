@@ -1,0 +1,201 @@
+\documentclass[t]{beamer}  % [t], [c], или [b] --- вертикальное выравнивание на слайдах (верх, центр, низ)
+%\documentclass[handout]{beamer} % Раздаточный материал (на слайдах всё сразу)
+%\documentclass[aspectratio=169]{beamer} % Соотношение сторон
+
+% \usetheme{Berkeley} % Тема оформления
+%\usetheme{Bergen}
+%\usetheme{Szeged}
+
+%\usecolortheme{beaver} % Цветовая схема
+%\useinnertheme{circles}
+%\useinnertheme{rectangles}
+
+\usetheme{HSE}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%% Beamer по-русски
+\newtheorem{rtheorem}{Теорема}
+\newtheorem{rproof}{Доказательство}
+\newtheorem{rexample}{Пример}
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумерация формул слева
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+%%% Другие пакеты
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+\usepackage{soul} % Модификаторы начертания
+\usepackage{csquotes} % Еще инструменты для ссылок
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\usepackage{multicol} % Несколько колонок
+
+%%% Картинки
+\usepackage{tikz} % Работа с графикой
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\title{5.1. Презентации: пакет beamer}
+\subtitle{Документы и презентации в \LaTeX}
+\author{Данил Фёдоровых}
+\date{\today}
+\institute[Высшая школа экономики]{Национальный исследовательский университет \\ <<Высшая школа экономики>>}
+
+\begin{document}
+
+\frame[plain]{\titlepage}	% Титульный слайд
+
+\section{Поочередное появление объектов}
+\subsection{Команда pause}
+ 
+\begin{frame}
+	\frametitle{\insertsection} 
+	\framesubtitle{\insertsubsection}
+	\begin{itemize}
+		\item beamer ---  это \alert{удобный} \textbf{пакет} для создания презентаций.
+		\item Это наш первый слайд \pause
+		\item Вот полное руководство по beamer:  \href{http://ctan.uni-altai.ru/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{http://ctan.uni-altai.ru/macros/latex/contrib/beamer/doc/beameruserguide.pdf} \pause
+		\item Паузу можно поставить в любом \pause месте.
+		\item Для печати презентации есть режим handout.
+	\end{itemize}
+\end{frame}
+
+\subsection{Более сложно}
+
+\begin{frame}
+	\frametitle{Поочередное появление пунктов списка}
+	\framesubtitle{\insertsubsection}
+    \uncover<4->{Эта строчка появляется не сразу, но занимает место.}
+    \only<5->{Эта строчка появляется не сразу и не занимает места.}
+    \begin{enumerate}
+        \item<1-5> Сначала появляются первый и последний пункт (первый потом исчезнет).
+        \item<2-> Потом второй
+        \item<3-> И наконец третий
+        \item<1-> Последний пункт появляется вместе с первым
+    	\item<6-> В самом конце первый пункт исчезает, зато появляется картинка: \insertlogo.
+    \end{enumerate}
+    \alt<4>{Это \alert{четвертый} слайд}{Это не четвертый слайд.}
+    \temporal<3-4>{Слайды 1, 2}{Слайды 3, 4}{Сайды 5, 6, 7, ...}
+\end{frame}
+
+\begin{frame}{Пример из руководства}
+   \textbf{This line is bold on all three slides.}
+   \textbf<2>{This line is bold only on the second slide.}
+   \textbf<3>{This line is bold only on the third slide.}
+   \textbf<3,4>{Эта строчка полужирная на 3-м и 4-м слайде.}
+	\color<3-4>[RGB]{255,0,0} Этот текст красный только на сладах 3-4.
+\end{frame}
+
+\section{Об оформлении}
+\subsection{Презентация в целом}
+
+\begin{frame}[c] % [t], [c], или [b] --- вертикальное выравнивание на слайде (верх, центр, низ)
+	\frametitle{\insertsection}
+	\framesubtitle{\insertsubsection}
+	\begin{itemize}
+		\item Варианты оформления можно посмотреть здесь:  \href{http://www.hartwork.org/beamer-theme-matrix/}{http://www.hartwork.org/beamer-theme-matrix/} 
+		\item Символика НИУ ВШЭ в формате PDF: \href{http://www.hse.ru/org/hse/info/logo}{http://www.hse.ru/org/hse/info/logo}
+		\item Можно создавать свои темы.
+		\item Можно выровнять текст на слайдах по верхнему краю с использованием опции [t] (у всей презентации ---  \texttt{[t]{beamer}} или у отдельного слайда \texttt{{frame}[t]}) 
+		\item Можно регулировать формат слайдов с помощью опции \texttt{[aspectratio=xx]}. Например, \texttt{[aspectratio=169]}. 
+	\end{itemize}
+\end{frame}
+
+\subsection{На слайде}
+
+\begin{frame}
+	\frametitle{\insertsection}
+	\framesubtitle{\insertsubsection}
+    \begin{block}{Первый блок}
+		Текст первого блока
+	\end{block}
+	\begin{block}{Второй блок}
+		Текст второго блока
+    \end{block}
+	\begin{block}{Кнопка}
+		\hyperlink{lab}{\beamerbutton{Кнопка со ссылкой}} 
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\insertsection}
+	\framesubtitle{\insertsubsection}
+    \begin{rtheorem}
+		Формулировка теоремы.    
+	\end{rtheorem}
+	\begin{rproof}
+		Текст доказательства.
+    \end{rproof}
+	\begin{rexample}
+		Текст примера.
+	\end{rexample}
+\end{frame}
+
+\section{Формулы}
+
+\begin{frame}
+	\frametitle{\insertsection}
+	\begin{itemize}
+		\item $\displaystyle\int_0^1 x=1/2$  
+		\item $2\times 2=4$, $2^2=4$ 
+		\item $\displaystyle\frac{5}{\alert{6}}=\frac{1}{1+\frac{1}{5}}$ 
+	\end{itemize}
+\end{frame}
+
+\section{Большой текст}
+
+\begin{frame}[shrink=7]\label{lab}  % Опцию shrink лучше не использовать
+	\frametitle{\insertsection}
+	\textsl{Чуден Днепр при тихой погоде, когда вольно и плавно мчит сквозь леса и горы полные воды свои. Ни зашелохнет; ни прогремит. Глядишь, и не знаешь, идет или не идет его величавая ширина, и чудится, будто весь вылит он из стекла, и будто голубая зеркальная дорога, без меры в ширину, без конца в длину, реет и вьется по зеленому миру. Любо тогда и жаркому солнцу оглядеться с вышины и погрузить лучи в холод стеклянных вод и прибережным лесам ярко отсветиться в водах. Зеленокудрые! они толпятся вместе с полевыми цветами к водам и, наклонившись, глядят в них и не наглядятся, и не налюбуются светлым  своим зраком, и усмехаются к нему, и приветствуют его, кивая ветвями. В середину же Днепра они не смеют глянуть: никто, кроме солнца и голубого неба, не глядит в него. Редкая птица долетит до середины Днепра. Пышный! ему нет равной реки в мире. Чуден Днепр и при теплой летней ночи, когда все засыпает --- и человек, и зверь, и птица; а бог один величаво озирает небо и землю и величаво сотрясает ризу.}
+
+	\hfill{\textit{Н. В. Гоголь}}
+\end{frame}
+ 
+\includeonlylecture{lec1} % Можно поместить это в преамбулу
+
+\lecture{Лекция 1}{lec1}
+	\section{<<Лекции>>}
+	\begin{frame}
+		\frametitle{\insertsection}
+		lecture-функционал позволяет включать в презентацию только отдельные слайды, а в одном файле держать целый цикл презентаций 
+	\end{frame}
+
+\lecture{Лекция 2}{lec2}
+	\section{Это лекция 2}
+	\begin{frame}
+	\frametitle{\insertsection}
+		Все frames не внутри какой-нибудь lecture присутствуют всегда. Если нет  команды \verb"includeonlylecture{}", то все лекции тоже присутствуют всегда. Отдельную лекцию можно показать с помощью \verb"includeonlylecture{}".
+	\end{frame}
+
+\end{document}
